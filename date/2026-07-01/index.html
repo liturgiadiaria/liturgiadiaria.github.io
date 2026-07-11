@@ -3,28 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missa - 01 de Julho de 2026</title>
+    <title>Quarta-feira, 13ª Semana do Tempo Comum</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background-color: #f8fafc; color: #1e293b; }
-        h1 { color: #1e3a8a; }
-        .video-container { margin: 20px 0; }
+        /* --- ESTILOS GERAIS (Fundo cinza claro igual ao site) --- */
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* --- MENU DE NAVEGAÇÃO SUPERIOR --- */
+        nav {
+            background-color: #0f172a;
+            padding: 12px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- CONTAINER CENTRALIZADO (Estreito igual ao print) --- */
+        main {
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        /* --- CABEÇALHO DA LITURGIA (Borda verde do Tempo Comum) --- */
+        .header-liturgia {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            border-top: 8px solid #16a34a; /* Cor Verde Litúrgica */
+            margin-bottom: 20px;
+        }
+
+        .header-liturgia h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #1e3a8a;
+            font-weight: 700;
+        }
+
+        .tag-tempo {
+            display: inline-block;
+            background-color: #dcfce7;
+            color: #15803d;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* --- ALERTA /AVISO (Igual a caixinha amarela do print) --- */
+        .alerta-liturgico {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            border-left: 4px solid #eab308;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            color: #713f12;
+            margin-bottom: 20px;
+        }
+
+        /* --- CARD DE MÚSICA (Blocos Brancos separados) --- */
+        .card-musica {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .momento-missa {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #eab308; /* Tom dourado para o momento */
+            font-weight: 700;
+            margin: 0 0 5px 0;
+        }
+
+        .titulo-musica {
+            font-size: 1.3rem;
+            color: #1e3a8a;
+            margin: 0 0 15px 0;
+            font-weight: 600;
+        }
+
+        /* --- LETRA DA MÚSICA (Formatada para fácil leitura) --- */
+        .letra-musica {
+            font-size: 1.05rem;
+            color: #334155;
+            white-space: pre-line; /* Mantém as quebras de linha da letra */
+            margin-bottom: 15px;
+        }
+
+        /* --- BOTÃO DE VOLTAR NO FINAL --- */
+        .btn-voltar {
+            display: block;
+            text-align: center;
+            background-color: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 40px;
+        }
+        .btn-voltar:hover {
+            background-color: #1d4ed8;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Repertório da Missa - 01/07/2026</h1>
-    <p>Aqui você pode colocar as cifras, letras e os vídeos para o pessoal ensaiar.</p>
+    <nav>
+        <a href="../../index.html">← Voltar ao Calendário</a>
+    </nav>
 
-    <h2>Canto de Entrada</h2>
-    <p>Letra da música aqui...</p>
+    <main>
 
-    <div class="video-container">
-        <!-- Espaço para colocar o vídeo do YouTube depois -->
-        <p><em>(Vídeo do YouTube ensaiando a música)</em></p>
-    </div>
+        <!-- Bloco do Topo com a Data e Cor Litúrgica -->
+        <div class="header-liturgia">
+            <h1>Quarta-feira, 13ª Semana do<br>Tempo Comum, Ano Par (II)</h1>
+            <span class="tag-tempo">Tempo Comum</span>
+        </div>
 
-    <br>
-    <a href="../../index.html">&larr; Voltar para o Calendário</a>
+        <!-- Caixinha Amarela de Alerta/Aviso -->
+        <div class="alerta-liturgico">
+            📌 <strong>Nota:</strong> As sugestões abaixo seguem as leituras oficiais do dia. Adapte o repertório conforme a realidade da sua comunidade.
+        </div>
+
+        <!-- CARD: Canto de Entrada -->
+        <div class="card-musica">
+            <p class="momento-missa"># Entrada</p>
+            <h2 class="titulo-musica">Como Membros de Cristo</h2>
+            <div class="letra-musica">Como membros de Cristo reunidos aqui
+            Para celebrar a nossa salvação
+            O Senhor nos convida a partilhar
+            Do banquete do amor, do vinho e do pão.
+
+            <strong>Refrão:</strong>
+            Vem Senhor, nos reunir em tua paz!
+            Tua Palavra nos liberta e nos refaz!</div>
+        </div>
+
+        <!-- CARD: Canto de Ofertório -->
+        <div class="card-musica">
+            <p class="momento-missa"># Ofertório</p>
+            <h2 class="titulo-musica">Bendito Sejas, Senhor Deus</h2>
+            <div class="letra-musica">Bendito sejas, Senhor Deus do universo
+            Pelo pão que recebemos de tua bondade
+            Fruto da terra e do trabalho do homem
+            Que agora te apresentamos.
+
+            <strong>Refrão:</strong>
+            Bendito seja Deus para sempre!</div>
+        </div>
+
+        <!-- CARD: Comunhão -->
+        <div class="card-musica">
+            <p class="momento-missa"># Comunhão</p>
+            <h2 class="titulo-musica">Eu Sou o Pão da Vida</h2>
+            <div class="letra-musica">Eu sou o Pão da vida
+            Quem vem a mim não terá fome
+            Quem crê em mim não terá sede
+            Ninguém vem a mim se o Pai não o atrair.
+
+            <strong>Refrão:</strong>
+            E eu o ressuscitarei, e eu o ressuscitarei
+            E eu o ressuscitarei no último dia!</div>
+        </div>
+
+        <!-- Botão para retornar ao início -->
+        <a href="../../index.html" class="btn-voltar">Voltar para o Calendário</a>
+
+    </main>
 
 </body>
 </html>
