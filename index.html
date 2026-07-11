@@ -150,7 +150,7 @@
             transition: transform 0.2s, background-color 0.2s;
         }
 
-        .dia:hover:not(.dia-vazio) {
+        .dia:hover:not(.dia-vazio):not(.dia-indisponivel) {
             transform: scale(1.05);
             background-color: #cbd5e1;
         }
@@ -161,7 +161,7 @@
             border: 1px solid #fef3c7;
         }
 
-        .domingo:hover {
+        .domingo:hover:not(.dia-indisponivel) {
             background-color: #fef3c7 !important;
         }
 
@@ -170,6 +170,20 @@
             color: #cbd5e1;
             font-weight: normal;
             pointer-events: none;
+        }
+
+        /* --- ESTILO PARA OS DIAS INDISPONÍVEIS (SEM PREENCHIMENTO) --- */
+        .dia.dia-indisponivel {
+            background-color: transparent !important;
+            border: 1px solid #e2e8f0;
+            color: #94a3b8 !important;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .dia.dia-indisponivel:hover {
+            background-color: transparent !important;
+            transform: none !important;
         }
 
         footer {
@@ -258,15 +272,24 @@
                 a.className = "dia";
                 a.innerText = dia;
 
-                const mesFormatado = String(mes + 1).padStart(2, '0');
-                const diaFormatado = String(dia).padStart(2, '0');
-                
-                // AJUSTADO AQUI: Agora aponta certinho para a pasta do dia
-                a.href = `date/${ano}-${mesFormatado}-${diaFormatado}/`;
-
                 const dataDia = new Date(ano, mes, dia);
                 if (dataDia.getDay() === 0) {
                     a.classList.add("domingo");
+                }
+
+                // APLICANDO A REGRA: Se for o mês de Julho de 2026 e o dia estiver entre 1 e 11
+                if (ano === 2026 && mes === 6 && dia >= 1 && dia <= 11) {
+                    a.classList.add("dia-indisponivel");
+                    a.removeAttribute("href"); // Remove o link completamente
+                    a.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        alert("Não está mais disponível");
+                    });
+                } else {
+                    // Configuração de link padrão apenas para os dias disponíveis
+                    const mesFormatado = String(mes + 1).padStart(2, '0');
+                    const diaFormatado = String(dia).padStart(2, '0');
+                    a.href = `date/${ano}-${mesFormatado}-${diaFormatado}/`;
                 }
 
                 grid.appendChild(a);
