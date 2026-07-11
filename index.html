@@ -3,43 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Richard Tavares | Design & Tech</title>
+    <title>Músicas para Missa</title>
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            text-align: center; 
-            padding: 10% 5%; 
-            background: #0f172a; 
-            color: #f8fafc;
+        /* Cores e Estilo Geral */
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
             margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #1e293b;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #1e293b;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        h1 { color: #38bdf8; margin-bottom: 10px; }
-        p { color: #94a3b8; font-size: 1.1rem; line-height: 1.6; }
-        .badge {
-            display: inline-block;
-            background: #0ea5e9;
+
+        /* Topo / Cabeçalho */
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            margin-top: 15px;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Menu de Navegação */
+        nav {
+            background-color: #0f172a;
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        /* Conteúdo Principal */
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Blocos de Momentos da Missa */
+        .momento-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid #3b82f6;
+        }
+
+        .momento-card h2 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+
+        /* Links das Músicas */
+        .lista-musicas {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+
+        .lista-musicas li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .lista-musicas li:last-child {
+            border-bottom: none;
+        }
+
+        .lista-musicas a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .lista-musicas a:hover {
+            text-decoration: underline;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 Meu Site está Online!</h1>
-        <p>Olá! Eu sou o Richard. Este é o meu novo espaço na web, hospedado de forma 100% gratuita no GitHub Pages.</p>
-        <span class="badge">m Construção</span>
-    </div>
+
+    <header>
+        <h1>🎵 Músicas para Missa</h1>
+        <p>Sugestões de cantos litúrgicos organizados para a celebração</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre o Projeto</a>
+    </nav>
+
+    <main>
+        
+        <div class="momento-card">
+            <h2>Canto de Entrada</h2>
+            <ul class="lista-musicas">
+                <li><a href="#">Exemplo de Música 1 (Clique para ver a cifra)</a></li>
+                <li><a href="#">Exemplo de Música 2</a></li>
+            </ul>
+        </div>
+
+        <div class="momento-card">
+            <h2>Ato Penitencial</h2>
+            <ul class="lista-musicas">
+                <li><a href="#">Senhor, Tende Piedade de Nós</a></li>
+            </ul>
+        </div>
+
+        <div class="momento-card">
+            <h2>Aclamação ao Evangelho</h2>
+            <ul class="lista-musicas">
+                <li><a href="#">Aleluia, Alguém do Povo Exclama</a></li>
+            </ul>
+        </div>
+
+        <div class="momento-card">
+            <h2>Canto de Comunhão</h2>
+            <ul class="lista-musicas">
+                <li><a href="#">Exemplo de Canto de Comunhão 1</a></li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Músicas para Missa. Hospedado gratuitamente no GitHub Pages.</p>
+    </footer>
+
 </body>
 </html>
