@@ -77,31 +77,6 @@
             color: #1e3a8a;
         }
 
-        .lista-musicas {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0 0 0;
-        }
-
-        .lista-musicas li {
-            padding: 8px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .lista-musicas li:last-child {
-            border-bottom: none;
-        }
-
-        .lista-musicas a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .lista-musicas a:hover {
-            text-decoration: underline;
-        }
-
         /* --- SEÇÃO DO CALENDÁRIO --- */
         .calendario-container {
             background: white;
@@ -161,7 +136,6 @@
             border-bottom: 1px solid #e2e8f0;
         }
 
-        /* Mudança para tag <a> para virar botão clicável */
         .dia {
             background-color: #e2e8f0;
             color: #334155;
@@ -172,7 +146,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none; /* Remove o sublinhado de link */
+            text-decoration: none;
             transition: transform 0.2s, background-color 0.2s;
         }
 
@@ -183,7 +157,7 @@
 
         .domingo {
             background-color: #fffbeb;
-            color: #b45309; /* Tom marrom/dourado escuro para o texto */
+            color: #b45309;
             border: 1px solid #fef3c7;
         }
 
@@ -195,7 +169,7 @@
             background-color: transparent;
             color: #cbd5e1;
             font-weight: normal;
-            pointer-events: none; /* Desativa o clique nos dias vazios */
+            pointer-events: none;
         }
 
         footer {
@@ -220,7 +194,6 @@
     </nav>
 
     <main>
-        
         <div class="momento-card">
             <h2>Próxima Missa</h2>
             <p>Selecione um dia no calendário abaixo para conferir o repertório, cifras e vídeos de cada celebração.</p>
@@ -238,7 +211,6 @@
                 <!-- Inserido dinamicamente -->
             </div>
         </div>
-
     </main>
 
     <footer>
@@ -246,7 +218,7 @@
     </footer>
 
     <script>
-        let dataAtual = new Date(2026, 6, 1); // Começa em Julho de 2026
+        let dataAtual = new Date(2026, 6, 1);
 
         const nomesMeses = [
             "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -274,26 +246,23 @@
             const totalDiasMes = new Date(ano, mes + 1, 0).getDate();
             const totalDiasMesAnterior = new Date(ano, mes, 0).getDate();
 
-            // Dias do mês anterior
             for (let i = primeiroDiaSemana - 1; i >= 0; i--) {
-                const ava = document.createElement("div");
-                ava.className = "dia dia-vazio";
-                ava.innerText = totalDiasMesAnterior - i;
-                grid.appendChild(ava);
+                const div = document.createElement("div");
+                div.className = "dia dia-vazio";
+                div.innerText = totalDiasMesAnterior - i;
+                grid.appendChild(div);
             }
 
-            // Dias do mês atual (Agora são links clicáveis <a>)
             for (let dia = 1; dia <= totalDiasMes; dia++) {
                 const a = document.createElement("a");
                 a.className = "dia";
                 a.innerText = dia;
 
-                // Formata o mês e dia para ter sempre 2 dígitos (ex: 07 em vez de 7)
                 const mesFormatado = String(mes + 1).padStart(2, '0');
                 const diaFormatado = String(dia).padStart(2, '0');
                 
-                // Define para onde o link vai levar (Exemplo: 2026-07-12.html)
-                a.href = `${ano}-${mesFormatado}-${diaFormatado}.html`;
+                // AJUSTADO AQUI: Agora aponta certinho para a pasta do dia
+                a.href = `date/${ano}-${mesFormatado}-${diaFormatado}/`;
 
                 const dataDia = new Date(ano, mes, dia);
                 if (dataDia.getDay() === 0) {
@@ -303,7 +272,6 @@
                 grid.appendChild(a);
             }
 
-            // Dias do próximo mês
             const totalElementos = grid.children.length - 7;
             const diasRestantes = 42 - totalElementos;
             for (let dia = 1; dia <= diasRestantes; dia++) {
