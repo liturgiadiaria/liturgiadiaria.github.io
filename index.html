@@ -111,6 +111,90 @@
             font-size: 0.9rem;
             margin-top: 50px;
         }
+
+        /* Container principal do calendário */
+    .calendario-container {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        max-width: 750px;
+        margin: 30px auto;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    /* Cabeçalho do mês */
+    .calendario-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .calendario-header h2 {
+        margin: 0;
+        font-size: 2rem;
+        color: #1e3a8a; /* Azul escuro */
+        font-weight: 600;
+    }
+
+    .calendario-header h2 span {
+        color: #dfad43; /* Dourado para o ano */
+    }
+
+    .seta-btn {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #64748b;
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+
+    /* Estrutura da tabela (Grid de 7 colunas) */
+    .calendario-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 12px;
+        text-align: center;
+    }
+
+    /* Dias da semana (DOM, SEG, TER...) */
+    .dia-semana {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #64748b;
+        text-transform: uppercase;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    /* Estilo geral de cada quadradinho de dia */
+    .dia {
+        background-color: #e2e8f0; /* Fundo cinza padrão */
+        color: #334155;
+        border-radius: 8px;
+        padding: 20px 0;
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Destaque especial para os Domingos */
+    .domingo {
+        background-color: #fffbeb; /* Fundo amarelado suave */
+        color: #000000;
+        border: 1px solid #fef3c7;
+    }
+
+    /* Dias de outros meses (apagadinhos/claros) */
+    .dia-vazio {
+        background-color: transparent;
+        color: #cbd5e1;
+        font-weight: normal;
+    }
     </style>
 </head>
 <body>
@@ -157,6 +241,80 @@
         </div>
 
     </main>
+
+    <div class="calendario-container">
+    <!-- Cabeçalho com o Mês e Ano -->
+    <div class="calendario-header">
+        <button class="seta-btn">&lsaquo;</button>
+        <h2>Julho <span>2026</span></h2>
+        <button class="seta-btn">&rsaquo;</button>
+    </div>
+
+    <!-- Dias da Semana -->
+    <div class="calendario-grid">
+        <div class="dia-semana">Dom</div>
+        <div class="dia-semana">Seg</div>
+        <div class="dia-semana">Ter</div>
+        <div class="dia-semana">Qua</div>
+        <div class="dia-semana">Qui</div>
+        <div class="dia-semana">Sex</div>
+        <div class="dia-semana">Sáb</div>
+
+        <!-- Linha 1 -->
+        <div class="dia domingo">28</div>
+        <div class="dia dia-vazio">29</div>
+        <div class="dia dia-vazio">30</div>
+        <div class="dia">1</div>
+        <div class="dia">2</div>
+        <div class="dia">3</div>
+        <div class="dia">4</div>
+
+        <!-- Linha 2 -->
+        <div class="dia domingo">5</div>
+        <div class="dia">6</div>
+        <div class="dia">7</div>
+        <div class="dia">8</div>
+        <div class="dia">9</div>
+        <div class="dia">10</div>
+        <div class="dia">11</div>
+
+        <!-- Linha 3 -->
+        <div class="dia domingo">12</div>
+        <div class="dia">13</div>
+        <div class="dia">14</div>
+        <div class="dia">15</div>
+        <div class="dia">16</div>
+        <div class="dia">17</div>
+        <div class="dia">18</div>
+
+        <!-- Linha 4 -->
+        <div class="dia domingo">19</div>
+        <div class="dia">20</div>
+        <div class="dia">21</div>
+        <div class="dia">22</div>
+        <div class="dia">23</div>
+        <div class="dia">24</div>
+        <div class="dia">25</div>
+
+        <!-- Linha 5 -->
+        <div class="dia domingo">26</div>
+        <div class="dia">27</div>
+        <div class="dia">28</div>
+        <div class="dia">29</div>
+        <div class="dia">30</div>
+        <div class="dia">31</div>
+        <div class="dia dia-vazio">1</div>
+
+        <!-- Linha 6 -->
+        <div class="dia domingo">2</div>
+        <div class="dia dia-vazio">3</div>
+        <div class="dia dia-vazio">4</div>
+        <div class="dia dia-vazio">5</div>
+        <div class="dia dia-vazio">6</div>
+        <div class="dia dia-vazio">7</div>
+        <div class="dia dia-vazio">8</div>
+    </div>
+</div>
 
     <footer>
         <p>&copy; 2026 - Músicas para Missa. Hospedado gratuitamente no GitHub Pages.</p>
