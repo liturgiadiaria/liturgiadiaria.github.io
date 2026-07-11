@@ -3,23 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Músicas para Missa | Calendário Litúrgico</title>
+    <title>Músicas para Missa</title>
     <style>
+        /* --- ESTILOS GERAIS E TOPO --- */
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #f8fafc;
             color: #1e293b;
         }
 
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* --- MENU DE NAVEGAÇÃO --- */
+        nav {
+            background-color: #0f172a;
+            text-align: center;
+            padding: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* --- BLOCOS DE CANTOS DA MISSA --- */
+        .momento-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid #3b82f6;
+        }
+
+        .momento-card h2 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+
+        .lista-musicas {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+
+        .lista-musicas li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .lista-musicas li:last-child {
+            border-bottom: none;
+        }
+
+        .lista-musicas a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .lista-musicas a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- SEÇÃO DO CALENDÁRIO --- */
         .calendario-container {
             background: white;
             border-radius: 16px;
             padding: 30px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            max-width: 750px;
-            margin: 30px auto;
+            margin-top: 40px;
+            margin-bottom: 40px;
         }
 
         .calendario-header {
@@ -81,122 +171,147 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: transform 0.2s;
         }
 
-        .dia:hover:not(.dia-vazio) {
-            transform: scale(1.05);
-        }
-
-        /* Domingos destacados */
         .domingo {
             background-color: #fffbeb;
             color: #000000;
             border: 1px solid #fef3c7;
         }
 
-        /* Dias fora do mês atual */
         .dia-vazio {
             background-color: transparent;
             color: #cbd5e1;
             font-weight: normal;
-            cursor: default;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
-<div class="calendario-container">
-    <div class="calendario-header">
-        <button class="seta-btn" onclick="mudarMes(-1)">&lsaquo;</button>
-        <h2 id="mes-ano-titulo">Julho <span>2026</span></h2>
-        <button class="seta-btn" onclick="mudarMes(1)">&rsaquo;</button>
-    </div>
+    <!-- TOPO AZUL -->
+    <header>
+        <h1>🎵 Músicas para Missa</h1>
+        <p>Sugestões de cantos litúrgicos organizados para a celebração</p>
+    </header>
 
-    <div class="calendario-grid" id="calendario-dias">
-        <!-- Os dias vão aparecer aqui dentro via JavaScript -->
-    </div>
-</div>
+    <!-- MENU -->
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre o Projeto</a>
+    </nav>
 
-<script>
-    // Começa mostrando o ano de 2026
-    let dataAtual = new Date(2026, 6, 1); // Julho é o mês 6 no JavaScript (0 = Janeiro)
-
-    const nomesMeses = [
-        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-    ];
-
-    function renderizarCalendario() {
-        const ano = dataAtual.getFullYear();
-        const mes = dataAtual.getMonth();
-
-        // Atualiza o título no topo
-        document.getElementById("mes-ano-titulo").innerHTML = `${nomesMeses[mes]} <span>${ano}</span>`;
-
-        const grid = document.getElementById("calendario-dias");
-        grid.innerHTML = ""; // Limpa o calendário anterior
-
-        // Recria os cabeçalhos dos dias da semana
-        const diasSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
-        diasSemana.forEach(dia => {
-            const div = document.createElement("div");
-            div.className = "dia-semana";
-            div.innerText = dia;
-            grid.appendChild(div);
-        });
-
-        // Descobre em qual dia da semana o mês começa e quantos dias ele tem
-        const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
-        const totalDiasMes = new Date(ano, mes + 1, 0).getDate();
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
         
-        // Pega quantos dias tinha o mês anterior para preencher o início
-        const totalDiasMesAnterior = new Date(ano, mes, 0).getDate();
+        <!-- Bloco de Músicas -->
+        <div class="momento-card">
+            <h2>Canto de Entrada</h2>
+            <ul class="lista-musicas">
+                <li><a href="#">Exemplo de Música 1</a></li>
+                <li><a href="#">Exemplo de Música 2</a></li>
+            </ul>
+        </div>
 
-        // 1. Preenche os dias que sobraram do mês anterior (ficam clarinhos)
-        for (let i = primeiroDiaSemana - 1; i >= 0; i--) {
-            const div = document.createElement("div");
-            div.className = "dia dia-vazio";
-            div.innerText = totalDiasMesAnterior - i;
-            grid.appendChild(div);
-        }
+        <div class="momento-card">
+            <h2>Ato Penitencial</h2>
+            <ul class="lista-musicas">
+                <li><a href="#">Senhor, Tende Piedade de Nós</a></li>
+            </ul>
+        </div>
 
-        // 2. Preenche os dias do mês atual
-        for (let dia = 1; dia <= totalDiasMes; dia++) {
-            const div = document.createElement("div");
-            div.className = "dia";
-            div.innerText = dia;
+        <!-- CALENDÁRIO COMPLETO -->
+        <div class="calendario-container">
+            <div class="calendario-header">
+                <button class="seta-btn" onclick="mudarMes(-1)">&lsaquo;</button>
+                <h2 id="mes-ano-titulo">Julho <span>2026</span></h2>
+                <button class="seta-btn" onclick="mudarMes(1)">&rsaquo;</button>
+            </div>
 
-            // Descobre o dia da semana atual para ver se é domingo
-            const dataDia = new Date(ano, mes, dia);
-            if (dataDia.getDay() === 0) {
-                div.classList.add("domingo"); // Aplica o amarelinho se for Domingo
+            <div class="calendario-grid" id="calendario-dias">
+                <!-- Dias gerados automaticamente pelo JS -->
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Músicas para Missa.</p>
+    </footer>
+
+    <!-- MOTOR DO CALENDÁRIO -->
+    <script>
+        let dataAtual = new Date(2026, 6, 1); // Julho de 2026
+
+        const nomesMeses = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+
+        function renderizarCalendario() {
+            const ano = dataAtual.getFullYear();
+            const mes = dataAtual.getMonth();
+
+            document.getElementById("mes-ano-titulo").innerHTML = `${nomesMeses[mes]} <span>${ano}</span>`;
+
+            const grid = document.getElementById("calendario-dias");
+            grid.innerHTML = "";
+
+            const diasSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+            diasSemana.forEach(dia => {
+                const div = document.createElement("div");
+                div.className = "dia-semana";
+                div.innerText = dia;
+                grid.appendChild(div);
+            });
+
+            const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
+            const totalDiasMes = new Date(ano, mes + 1, 0).getDate();
+            const totalDiasMesAnterior = new Date(ano, mes, 0).getDate();
+
+            for (let i = primeiroDiaSemana - 1; i >= 0; i--) {
+                const div = document.createElement("div");
+                div.className = "dia dia-vazio";
+                div.innerText = totalDiasMesAnterior - i;
+                grid.appendChild(div);
             }
 
-            grid.appendChild(div);
+            for (let dia = 1; dia <= totalDiasMes; dia++) {
+                const div = document.createElement("div");
+                div.className = "dia";
+                div.innerText = dia;
+
+                const dataDia = new Date(ano, mes, dia);
+                if (dataDia.getDay() === 0) {
+                    div.classList.add("domingo");
+                }
+
+                grid.appendChild(div);
+            }
+
+            const totalElementos = grid.children.length - 7;
+            const diasRestantes = 42 - totalElementos;
+            for (let dia = 1; dia <= diasRestantes; dia++) {
+                const div = document.createElement("div");
+                div.className = "dia dia-vazio";
+                div.innerText = dia;
+                grid.appendChild(div);
+            }
         }
 
-        // 3. Preenche os dias do próximo mês para completar a grade visual
-        const totalElementos = grid.children.length - 7; // Desconta a linha de cabeçalho
-        const diasRestantes = 42 - totalElementos; // Garante uma grade perfeita de 6 linhas
-        for (let dia = 1; dia <= diasRestantes; dia++) {
-            const div = document.createElement("div");
-            div.className = "dia dia-vazio";
-            div.innerText = dia;
-            grid.appendChild(div);
+        function mudarMes(direcao) {
+            dataAtual.setMonth(dataAtual.getMonth() + direcao);
+            renderizarCalendario();
         }
-    }
 
-    // Função que roda quando clica nas setinhas
-    function mudarMes(direcao) {
-        dataAtual.setMonth(dataAtual.getMonth() + direcao);
         renderizarCalendario();
-    }
-
-    // Inicializa o calendário na tela
-    renderizarCalendario();
-</script>
-
+    </script>
 </body>
 </html>
