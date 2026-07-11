@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quarta-feira, 13ª Semana do Tempo Comum</title>
-    <!-- Importando a fonte elegante (Playfair Display) e a moderna para os textos (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
         /* --- ESTILOS GERAIS --- */
@@ -20,7 +19,6 @@
             line-height: 1.6;
         }
 
-        /* --- BOTÃO DE VOLTAR SUPERIOR --- */
         .nav-topo {
             max-width: 650px;
             margin: 20px auto 0 auto;
@@ -31,36 +29,27 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.2s;
-        }
-        .nav-topo a:hover {
-            color: #1e293b;
         }
 
-        /* --- CONTAINER CENTRALIZADO --- */
         main {
             max-width: 650px;
             margin: 15px auto 40px auto;
             padding: 0 15px;
         }
 
-        /* --- NOVO CABEÇALHO DA LITURGIA (Idêntico ao print) --- */
+        /* --- CABEÇALHO DA LITURGIA --- */
         .header-liturgia {
-            background-color: #f4fbf7; /* Fundo suave levemente esverdeado */
-            border-radius: 24px; /* Bordas bem arredondadas */
+            background-color: #f4fbf7;
+            border-radius: 24px;
             padding: 35px 25px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
             border: 1px solid #e2e8f0;
             position: relative;
-            overflow: hidden; /* Garante que a faixa verde não saia da borda redonda */
+            overflow: hidden;
             margin-bottom: 25px;
         }
 
-        /* Faixa verde superior colada nas bordas */
         .header-liturgia::before {
             content: "";
             position: absolute;
@@ -68,7 +57,7 @@
             left: 0;
             right: 0;
             height: 10px;
-            background-color: #16a34a; /* Cor Verde Litúrgica */
+            background-color: #16a34a;
         }
 
         .data-topo {
@@ -83,10 +72,8 @@
             color: #475569;
             border: 1px solid #e2e8f0;
             margin-bottom: 20px;
-            margin-top: 5px;
         }
 
-        /* A Fonte Elegante aplicada no título principal */
         .header-liturgia h1 {
             font-family: 'Playfair Display', serif;
             margin: 0 0 20px 0;
@@ -96,7 +83,6 @@
             line-height: 1.2;
         }
 
-        /* Tags de informação embaixo do título */
         .tags-container {
             display: flex;
             justify-content: center;
@@ -131,7 +117,226 @@
             border-radius: 50%;
         }
 
-        /* --- CARDS DE MÚSICA REESTILIZADOS --- */
+        /* --- CARDS PRINCIPAIS COM ACCORDION NATIVO --- */
+        .card-secao-principal {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        /* Cabeçalho clicável do Accordion */
+        .card-secao-principal summary {
+            padding: 30px;
+            cursor: pointer;
+            list-style: none; /* Esconde a seta padrão do navegador */
+            position: relative;
+            outline: none;
+        }
+
+        /* Esconde a seta padrão no Safari */
+        .card-secao-principal summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Criando a nossa setinha estilizada na direita */
+        .card-secao-principal summary::after {
+            content: "";
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid #64748b;
+            border-bottom: 2px solid #64748b;
+            transform: translateY(-70%) rotate(45deg); /* Aponta para baixo por padrão */
+            transition: transform 0.2s ease;
+        }
+
+        /* Quando o accordion estiver ABERTO, a seta gira para CIMA */
+        .card-secao-principal[open] summary::after {
+            transform: translateY(-30%) rotate(-135deg);
+        }
+
+        /* Container do conteúdo que só aparece ao abrir */
+        .conteudo-accordion {
+            padding: 0 30px 30px 30px;
+        }
+
+        .titulo-secao-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 5px;
+        }
+
+        .wrapper-icone {
+            background-color: #fefbeb;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .wrapper-icone svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: #dfad43;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .wrapper-icone svg.estrela-fill {
+            fill: #dfad43;
+        }
+
+        .titulo-secao {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #0b2545;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .subtitulo-secao {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0;
+            padding-left: 60px;
+        }
+
+        /* Ajuste do subtítulo dentro do resumo */
+        summary .subtitulo-secao {
+            margin-bottom: 0;
+        }
+
+        /* --- SUB-BOXES INTERNAS --- */
+        .box-conteudo-interno {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .box-conteudo-interno:last-child {
+            margin-bottom: 0;
+        }
+
+        .topo-santo-interno {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .titulo-santo-interno {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #0b2545;
+            margin: 0;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .mini-data-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #e2e8f0;
+            color: #475569;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .mini-data-tag svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: #475569;
+            stroke-width: 2;
+        }
+
+        .texto-corrido {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .texto-oracao {
+            font-size: 0.95rem;
+            color: #334155;
+            font-style: italic;
+            border-left: 3px solid #e2e8f0;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        .titulo-oracao-label {
+            font-size: 0.9rem;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .fonte-consultada {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 15px;
+        }
+
+        .tag-leitura-tipo {
+            display: inline-block;
+            background-color: white;
+            color: #1e3a8a;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid #e2e8f0;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .tag-referencia {
+            display: inline-block;
+            color: #dfad43;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-left: 8px;
+        }
+
+        .titulo-leitura-interno {
+            font-size: 1.05rem;
+            color: #0b2545;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+        }
+
+        /* --- SEÇÃO DE MÚSICAS --- */
+        .secao-titulo-musicas {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #64748b;
+            margin: 40px 0 20px 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
         .card-musica {
             background: white;
             border-radius: 20px;
@@ -150,7 +355,6 @@
             margin: 0 0 8px 0;
         }
 
-        /* Aplicando a fonte elegante também nos títulos das músicas */
         .titulo-musica {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
@@ -169,7 +373,6 @@
             color: #1e3a8a;
         }
 
-        /* --- BOTÃO FINAL --- */
         .btn-voltar-fim {
             display: block;
             text-align: center;
@@ -180,23 +383,26 @@
             border-radius: 12px;
             font-weight: 600;
             margin-top: 30px;
-            transition: background 0.2s;
         }
-        .btn-voltar-fim:hover {
-            background-color: #1e3a8a;
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Link superior igual ao botão de voltar do print -->
     <div class="nav-topo">
         <a href="../../index.html">← Voltar ao Calendário</a>
     </div>
 
     <main>
 
-        <!-- Bloco do Topo Renovado -->
+        <!-- Cabeçalho Principal -->
         <div class="header-liturgia">
             <div class="data-topo">📅 Quarta-feira, 1 de julho de 2026</div>
             <h1>Quarta-feira, 13ª Semana do<br>Tempo Comum, Ano Par (II)</h1>
@@ -207,50 +413,109 @@
             </div>
         </div>
 
-        <!-- CARD: Canto de Entrada -->
-        <div class="card-musica">
-            <p class="momento-missa">Entrada</p>
-            <h2 class="titulo-musica">Como Membros de Cristo</h2>
-            <div class="letra-musica">Como membros de Cristo reunidos aqui
-            Para celebrar a nossa salvação
-            O Senhor nos convida a partilhar
-            Do banquete do amor, do vinho e do pão.
+        <!-- ================= SEÇÃO ACCORDION: SANTO(S) DO DIA ================= -->
+        <details class="card-secao-principal" open>
+            <summary>
+                <div class="titulo-secao-container">
+                    <div class="wrapper-icone">
+                        <svg class="estrela-fill" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h2 class="titulo-secao">Santo(s) do Dia</h2>
+                </div>
+                <p class="subtitulo-secao">Conheça as histórias dos santos celebrados hoje</p>
+            </summary>
+            
+            <div class="conteudo-accordion">
+                <!-- Sub-Box: São Júlio e São Aarão -->
+                <div class="box-conteudo-interno">
+                    <div class="topo-santo-interno">
+                        <h3 class="titulo-santo-interno">São Júlio e São Aarão, mártires da Bretanha</h3>
+                        <span class="mini-data-tag">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            1 de julho
+                        </span>
+                    </div>
+                    <p class="texto-corrido">São Júlio e São Aarão são venerados como mártires cristãos da Bretanha romana. Segundo a tradição, ambos deram a vida pela fé durante a perseguição promovida pelo imperador Diocleciano, no início do século IV.</p>
+                    <p class="texto-corrido">A devoção aos dois santos permanece especialmente viva em Caerleon, antiga fortaleza romana localizada no território do atual País de Gales. Na época, a cidade era um importante centro militar do Império Romano, o que torna ainda mais significativo o testemunho de fé deixado por esses mártires cristãos.</p>
+                    
+                    <div class="titulo-oracao-label">Oração:</div>
+                    <div class="texto-oracao">“Ó Deus, que concedestes aos Santos Júlio e Aarão a graça de testemunharem o Vosso amor até o derramamento de sangue na Bretanha, concedei-nos, por sua intercessão, a mesma fé inabalável e a coragem de vivermos o Evangelho em todos os momentos de nossa vida. Por Cristo, Nosso Senhor. Amém.”</div>
+                    
+                    <div class="fonte-consultada"><strong>Fontes consultadas:</strong> Vatican News</div>
+                </div>
 
-            <strong>Refrão:</strong>
-            Vem Senhor, nos reunir em tua paz!
-            Tua Palavra nos liberta e nos refaz!</div>
-        </div>
+                <!-- Sub-Box: Santo Aarão -->
+                <div class="box-conteudo-interno">
+                    <div class="topo-santo-interno">
+                        <h3 class="titulo-santo-interno">Santo Aarão, irmão de Moisés, sumo sacerdote do Antigo Testamento</h3>
+                        <span class="mini-data-tag">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            1 de julho
+                        </span>
+                    </div>
+                    <p class="texto-corrido">Santo Aarão foi o irmão de Moisés e teve papel fundamental na libertação do povo de Israel da escravidão no Egito. Escolhido por Deus para exercer o sacerdócio, tornou-se o primeiro sumo sacerdote do povo hebreu e acompanhou os israelitas durante a longa caminhada pelo deserto rumo à Terra Prometida.</p>
+                    <p class="texto-corrido">Em um momento de fraqueza, Aarão cedeu à pressão do povo e permitiu a confecção do bezerro de ouro enquanto Moisés estava no Monte Sinai. Apesar de receber o perdão divino, não lhe foi concedida a entrada em Canaã. As principais informações sobre sua vida encontram-se nos livros do Êxodo, Levítico, Números e Deuteronômio, além de referências no capítulo 5 da Carta aos Hebreus.</p>
+                    
+                    <div class="titulo-oracao-label">Oração:</div>
+                    <div class="texto-oracao">“Senhor, hoje de maneira especial, eu Vos peço pelas vocações, e em particular pelos sacerdotes. Iluminai os Pastores para que Vosso rebanho caminhe sob Vossa Luz. Dai também aos leigos a Vossa Graça, para que, junto com os Pastores, possam ser colaboradores na implantação do Reino de Deus entre nós. Amém. Santo Aarão, rogai por nós.”</div>
+                    
+                    <div class="fonte-consultada"><strong>Fontes consultadas:</strong> Bíblia Sagrada, Vatican News e Portal A12.</div>
+                </div>
+            </div>
+        </details>
 
-        <!-- CARD: Canto de Ofertório -->
-        <div class="card-musica">
-            <p class="momento-missa">Ofertório</p>
-            <h2 class="titulo-musica">Bendito Sejas, Senhor Deus</h2>
-            <div class="letra-musica">Bendito sejas, Senhor Deus do universo
-            Pelo pão que recebemos de tua bondade
-            Fruto da terra e do trabalho do homem
-            Que agora te apresentamos.
+        <!-- ================= SEÇÃO ACCORDION: LITURGIA DA PALAVRA ================= -->
+        <details class="card-secao-principal">
+            <summary>
+                <div class="titulo-secao-container">
+                    <div class="wrapper-icone">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="titulo-secao">Liturgia da Palavra</h2>
+                </div>
+                <p class="subtitulo-secao">Leituras, Salmo e Evangelho</p>
+            </summary>
+            
+            <div class="conteudo-accordion">
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Antífona de Entrada</span>
+                    <div class="texto-corrido">Povos todos do universo, batei palmas, gritai a Deus com brados de alegria. (Cf. Sl 46,2)</div>
+                </div>
 
-            <strong>Refrão:</strong>
-            Bendito seja Deus para sempre!</div>
-        </div>
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Primeira Leitura</span>
+                    <span class="tag-referencia">Am 5,14-15.21-24</span>
+                    <h3 class="titulo-leitura-interno">Leitura da Profecia de Amós</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;">Buscai o bem, não o mal,
+                    para terdes mais vida,
+                    só assim o Senhor Deus dos exércitos
+                    vos assistirá, como tendes afirmado.
+                    Odis o mal, amai o bem,
+                    restabelecei a justiça no julgamento,
+                    talvez o Senhor Deus dos exércitos
+                    se compadeça do resto da tribo de José.
+                    "Aborreço, rejeito vossas festas, diz o Senhor,
+                    não me agradam vossas assembleias de culto.
+                    Se me oferecerdes holocaustos,
+                    não aceitarei vossas oblações
+                    e não farei caso de vossos gordos animais de sacrifício.
+                    Livra-me da balbúrdia dos teus cantos,
+                    não quero ouvir a toada de tuas liras.
+                    Que a justiça seja abundante como água
+                    e a vida honesta, como torrente perene".
+                    Palavra do Senhor.</div>
+                </div>
+            </div>
+        </details>
 
-        <!-- CARD: Comunhão -->
-        <div class="card-musica">
-            <p class="momento-missa">Comunhão</p>
-            <h2 class="titulo-musica">Eu Sou o Pão da Vida</h2>
-            <div class="letra-musica">Eu sou o Pão da vida
-            Quem vem a mim não terá fome
-            Quem crê em mim não terá sede
-            Ninguém vem a mim se o Pai não o atrair.
-
-            <strong>Refrão:</strong>
-            E eu o ressuscitarei, e eu o ressuscitarei
-            E eu o ressuscitarei no último dia!</div>
-        </div>
-
-        <a href="../../index.html" class="btn-voltar-fim">Voltar para o Calendário</a>
-
-    </main>
+        <footer>
+        <p>&copy; 2026 - Músicas para Missa.</p>
+    </footer>
 
 </body>
 </html>
