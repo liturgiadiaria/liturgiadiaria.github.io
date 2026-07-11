@@ -4,155 +4,212 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quarta-feira, 13ª Semana do Tempo Comum</title>
+    <!-- Importando a fonte elegante (Playfair Display) e a moderna para os textos (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
-        /* --- ESTILOS GERAIS (Fundo cinza claro igual ao site) --- */
+        /* --- ESTILOS GERAIS --- */
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f1f5f9;
-            color: #1e293b;
+            background-color: #f8fafc;
+            color: #0f172a;
             line-height: 1.6;
         }
 
-        /* --- MENU DE NAVEGAÇÃO SUPERIOR --- */
-        nav {
-            background-color: #0f172a;
-            padding: 12px;
-            text-align: center;
+        /* --- BOTÃO DE VOLTAR SUPERIOR --- */
+        .nav-topo {
+            max-width: 650px;
+            margin: 20px auto 0 auto;
+            padding: 0 15px;
         }
-        nav a {
-            color: white;
+        .nav-topo a {
+            color: #64748b;
             text-decoration: none;
-            margin: 0 15px;
+            font-size: 0.9rem;
             font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
         }
-        nav a:hover {
-            text-decoration: underline;
+        .nav-topo a:hover {
+            color: #1e293b;
         }
 
-        /* --- CONTAINER CENTRALIZADO (Estreito igual ao print) --- */
+        /* --- CONTAINER CENTRALIZADO --- */
         main {
             max-width: 650px;
-            margin: 30px auto;
+            margin: 15px auto 40px auto;
             padding: 0 15px;
         }
 
-        /* --- CABEÇALHO DA LITURGIA (Borda verde do Tempo Comum) --- */
+        /* --- NOVO CABEÇALHO DA LITURGIA (Idêntico ao print) --- */
         .header-liturgia {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
+            background-color: #f4fbf7; /* Fundo suave levemente esverdeado */
+            border-radius: 24px; /* Bordas bem arredondadas */
+            padding: 35px 25px;
             text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
             border: 1px solid #e2e8f0;
-            border-top: 8px solid #16a34a; /* Cor Verde Litúrgica */
+            position: relative;
+            overflow: hidden; /* Garante que a faixa verde não saia da borda redonda */
+            margin-bottom: 25px;
+        }
+
+        /* Faixa verde superior colada nas bordas */
+        .header-liturgia::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background-color: #16a34a; /* Cor Verde Litúrgica */
+        }
+
+        .data-topo {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #475569;
+            border: 1px solid #e2e8f0;
             margin-bottom: 20px;
+            margin-top: 5px;
         }
 
+        /* A Fonte Elegante aplicada no título principal */
         .header-liturgia h1 {
-            margin: 0;
-            font-size: 1.6rem;
-            color: #1e3a8a;
+            font-family: 'Playfair Display', serif;
+            margin: 0 0 20px 0;
+            font-size: 2.3rem;
+            color: #0b2545;
             font-weight: 700;
+            line-height: 1.2;
         }
 
-        .tag-tempo {
-            display: inline-block;
-            background-color: #dcfce7;
-            color: #15803d;
-            padding: 4px 12px;
+        /* Tags de informação embaixo do título */
+        .tags-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tag-info {
+            background: white;
+            color: #1e293b;
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-top: 10px;
+            border: 1px solid #e2e8f0;
         }
 
-        /* --- ALERTA /AVISO (Igual a caixinha amarela do print) --- */
-        .alerta-liturgico {
-            background-color: #fefce8;
-            border: 1px solid #fef08a;
-            border-left: 4px solid #eab308;
-            border-radius: 8px;
-            padding: 12px 15px;
-            font-size: 0.9rem;
-            color: #713f12;
-            margin-bottom: 20px;
+        .tag-cor-verde {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        /* --- CARD DE MÚSICA (Blocos Brancos separados) --- */
+        .tag-cor-verde::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #16a34a;
+            border-radius: 50%;
+        }
+
+        /* --- CARDS DE MÚSICA REESTILIZADOS --- */
         .card-musica {
             background: white;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
             border: 1px solid #e2e8f0;
         }
 
         .momento-missa {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #eab308; /* Tom dourado para o momento */
-            font-weight: 700;
-            margin: 0 0 5px 0;
+            letter-spacing: 1.5px;
+            color: #b45309;
+            font-weight: 600;
+            margin: 0 0 8px 0;
         }
 
+        /* Aplicando a fonte elegante também nos títulos das músicas */
         .titulo-musica {
-            font-size: 1.3rem;
-            color: #1e3a8a;
-            margin: 0 0 15px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #0b2545;
+            margin: 0 0 20px 0;
             font-weight: 600;
         }
 
-        /* --- LETRA DA MÚSICA (Formatada para fácil leitura) --- */
         .letra-musica {
             font-size: 1.05rem;
             color: #334155;
-            white-space: pre-line; /* Mantém as quebras de linha da letra */
-            margin-bottom: 15px;
+            white-space: pre-line;
         }
 
-        /* --- BOTÃO DE VOLTAR NO FINAL --- */
-        .btn-voltar {
+        .letra-musica strong {
+            color: #1e3a8a;
+        }
+
+        /* --- BOTÃO FINAL --- */
+        .btn-voltar-fim {
             display: block;
             text-align: center;
-            background-color: #1e3a8a;
+            background-color: #0b2545;
             color: white;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 12px;
             font-weight: 600;
-            margin-top: 40px;
+            margin-top: 30px;
+            transition: background 0.2s;
         }
-        .btn-voltar:hover {
-            background-color: #1d4ed8;
+        .btn-voltar-fim:hover {
+            background-color: #1e3a8a;
         }
     </style>
 </head>
 <body>
 
-    <nav>
+    <!-- Link superior igual ao botão de voltar do print -->
+    <div class="nav-topo">
         <a href="../../index.html">← Voltar ao Calendário</a>
-    </nav>
+    </div>
 
     <main>
 
-        <!-- Bloco do Topo com a Data e Cor Litúrgica -->
+        <!-- Bloco do Topo Renovado -->
         <div class="header-liturgia">
+            <div class="data-topo">📅 Quarta-feira, 1 de julho de 2026</div>
             <h1>Quarta-feira, 13ª Semana do<br>Tempo Comum, Ano Par (II)</h1>
-            <span class="tag-tempo">Tempo Comum</span>
-        </div>
-
-        <!-- Caixinha Amarela de Alerta/Aviso -->
-        <div class="alerta-liturgico">
-            📌 <strong>Nota:</strong> As sugestões abaixo seguem as leituras oficiais do dia. Adapte o repertório conforme a realidade da sua comunidade.
+            
+            <div class="tags-container">
+                <span class="tag-info">Tempo Comum</span>
+                <span class="tag-info tag-cor-verde">Verde</span>
+            </div>
         </div>
 
         <!-- CARD: Canto de Entrada -->
         <div class="card-musica">
-            <p class="momento-missa"># Entrada</p>
+            <p class="momento-missa">Entrada</p>
             <h2 class="titulo-musica">Como Membros de Cristo</h2>
             <div class="letra-musica">Como membros de Cristo reunidos aqui
             Para celebrar a nossa salvação
@@ -166,7 +223,7 @@
 
         <!-- CARD: Canto de Ofertório -->
         <div class="card-musica">
-            <p class="momento-missa"># Ofertório</p>
+            <p class="momento-missa">Ofertório</p>
             <h2 class="titulo-musica">Bendito Sejas, Senhor Deus</h2>
             <div class="letra-musica">Bendito sejas, Senhor Deus do universo
             Pelo pão que recebemos de tua bondade
@@ -179,7 +236,7 @@
 
         <!-- CARD: Comunhão -->
         <div class="card-musica">
-            <p class="momento-missa"># Comunhão</p>
+            <p class="momento-missa">Comunhão</p>
             <h2 class="titulo-musica">Eu Sou o Pão da Vida</h2>
             <div class="letra-musica">Eu sou o Pão da vida
             Quem vem a mim não terá fome
@@ -191,8 +248,7 @@
             E eu o ressuscitarei no último dia!</div>
         </div>
 
-        <!-- Botão para retornar ao início -->
-        <a href="../../index.html" class="btn-voltar">Voltar para o Calendário</a>
+        <a href="../../index.html" class="btn-voltar-fim">Voltar para o Calendário</a>
 
     </main>
 
