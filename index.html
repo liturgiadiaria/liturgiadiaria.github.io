@@ -161,6 +161,7 @@
             border-bottom: 1px solid #e2e8f0;
         }
 
+        /* Mudança para tag <a> para virar botão clicável */
         .dia {
             background-color: #e2e8f0;
             color: #334155;
@@ -171,18 +172,30 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none; /* Remove o sublinhado de link */
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .dia:hover:not(.dia-vazio) {
+            transform: scale(1.05);
+            background-color: #cbd5e1;
         }
 
         .domingo {
             background-color: #fffbeb;
-            color: #000000;
+            color: #b45309; /* Tom marrom/dourado escuro para o texto */
             border: 1px solid #fef3c7;
+        }
+
+        .domingo:hover {
+            background-color: #fef3c7 !important;
         }
 
         .dia-vazio {
             background-color: transparent;
             color: #cbd5e1;
             font-weight: normal;
+            pointer-events: none; /* Desativa o clique nos dias vazios */
         }
 
         footer {
@@ -196,38 +209,24 @@
 </head>
 <body>
 
-    <!-- TOPO AZUL -->
     <header>
         <h1>🎵 Músicas para Missa</h1>
         <p>Sugestões de cantos litúrgicos organizados para a celebração</p>
     </header>
 
-    <!-- MENU -->
     <nav>
         <a href="index.html">Início</a>
         <a href="sobre.html">Sobre o Projeto</a>
     </nav>
 
-    <!-- CONTEÚDO PRINCIPAL -->
     <main>
         
-        <!-- Bloco de Músicas -->
         <div class="momento-card">
-            <h2>Canto de Entrada</h2>
-            <ul class="lista-musicas">
-                <li><a href="#">Exemplo de Música 1</a></li>
-                <li><a href="#">Exemplo de Música 2</a></li>
-            </ul>
+            <h2>Próxima Missa</h2>
+            <p>Selecione um dia no calendário abaixo para conferir o repertório, cifras e vídeos de cada celebração.</p>
         </div>
 
-        <div class="momento-card">
-            <h2>Ato Penitencial</h2>
-            <ul class="lista-musicas">
-                <li><a href="#">Senhor, Tende Piedade de Nós</a></li>
-            </ul>
-        </div>
-
-        <!-- CALENDÁRIO COMPLETO -->
+        <!-- CALENDÁRIO -->
         <div class="calendario-container">
             <div class="calendario-header">
                 <button class="seta-btn" onclick="mudarMes(-1)">&lsaquo;</button>
@@ -236,7 +235,7 @@
             </div>
 
             <div class="calendario-grid" id="calendario-dias">
-                <!-- Dias gerados automaticamente pelo JS -->
+                <!-- Inserido dinamicamente -->
             </div>
         </div>
 
@@ -246,9 +245,8 @@
         <p>&copy; 2026 - Músicas para Missa.</p>
     </footer>
 
-    <!-- MOTOR DO CALENDÁRIO -->
     <script>
-        let dataAtual = new Date(2026, 6, 1); // Julho de 2026
+        let dataAtual = new Date(2026, 6, 1); // Começa em Julho de 2026
 
         const nomesMeses = [
             "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -276,26 +274,36 @@
             const totalDiasMes = new Date(ano, mes + 1, 0).getDate();
             const totalDiasMesAnterior = new Date(ano, mes, 0).getDate();
 
+            // Dias do mês anterior
             for (let i = primeiroDiaSemana - 1; i >= 0; i--) {
-                const div = document.createElement("div");
-                div.className = "dia dia-vazio";
-                div.innerText = totalDiasMesAnterior - i;
-                grid.appendChild(div);
+                const ava = document.createElement("div");
+                ava.className = "dia dia-vazio";
+                ava.innerText = totalDiasMesAnterior - i;
+                grid.appendChild(ava);
             }
 
+            // Dias do mês atual (Agora são links clicáveis <a>)
             for (let dia = 1; dia <= totalDiasMes; dia++) {
-                const div = document.createElement("div");
-                div.className = "dia";
-                div.innerText = dia;
+                const a = document.createElement("a");
+                a.className = "dia";
+                a.innerText = dia;
+
+                // Formata o mês e dia para ter sempre 2 dígitos (ex: 07 em vez de 7)
+                const mesFormatado = String(mes + 1).padStart(2, '0');
+                const diaFormatado = String(dia).padStart(2, '0');
+                
+                // Define para onde o link vai levar (Exemplo: 2026-07-12.html)
+                a.href = `${ano}-${mesFormatado}-${diaFormatado}.html`;
 
                 const dataDia = new Date(ano, mes, dia);
                 if (dataDia.getDay() === 0) {
-                    div.classList.add("domingo");
+                    a.classList.add("domingo");
                 }
 
-                grid.appendChild(div);
+                grid.appendChild(a);
             }
 
+            // Dias do próximo mês
             const totalElementos = grid.children.length - 7;
             const diasRestantes = 42 - totalElementos;
             for (let dia = 1; dia <= diasRestantes; dia++) {
