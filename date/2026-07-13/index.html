@@ -1,1 +1,476 @@
-m
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segunda-feira da 15ª Semana do Tempo Comum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        .nav-topo {
+            max-width: 650px;
+            margin: 20px auto 0 auto;
+            padding: 0 15px;
+        }
+        .nav-topo a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        main {
+            max-width: 650px;
+            margin: 15px auto 40px auto;
+            padding: 0 15px;
+        }
+
+        /* --- CABEÇALHO DA LITURGIA --- */
+        .header-liturgia {
+            background-color: #f4fbf7;
+            border-radius: 24px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .header-liturgia::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background-color: #16a34a;
+        }
+
+        .data-topo {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .header-liturgia h1 {
+            font-family: 'Playfair Display', serif;
+            margin: 0 0 20px 0;
+            font-size: 2.1rem;
+            color: #0b2545;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .tags-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tag-info {
+            background: white;
+            color: #1e293b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tag-cor-verde {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag-cor-verde::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #16a34a;
+            border-radius: 50%;
+        }
+
+        /* --- CARDS PRINCIPAIS COM ACCORDION NATIVO --- */
+        .card-secao-principal {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        /* Cabeçalho clicável do Accordion */
+        .card-secao-principal summary {
+            padding: 30px;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            outline: none;
+        }
+
+        .card-secao-principal summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .card-secao-principal summary::after {
+            content: "";
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid #64748b;
+            border-bottom: 2px solid #64748b;
+            transform: translateY(-70%) rotate(45deg);
+            transition: transform 0.2s ease;
+        }
+
+        .card-secao-principal[open] summary::after {
+            transform: translateY(-30%) rotate(-135deg);
+        }
+
+        .conteudo-accordion {
+            padding: 0 30px 30px 30px;
+        }
+
+        .titulo-secao-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 5px;
+        }
+
+        .wrapper-icone {
+            background-color: #fefbeb;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .wrapper-icone svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: #dfad43;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .wrapper-icone svg.estrela-fill {
+            fill: #dfad43;
+        }
+
+        .titulo-secao {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #0b2545;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .subtitulo-secao {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0;
+            padding-left: 60px;
+        }
+
+        /* --- SUB-BOXES INTERNAS --- */
+        .box-conteudo-interno {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .box-conteudo-interno:last-child {
+            margin-bottom: 0;
+        }
+
+        .topo-santo-interno {
+            display: flex;
+            justify-space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .titulo-santo-interno {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #0b2545;
+            margin: 0;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .mini-data-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #e2e8f0;
+            color: #475569;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .mini-data-tag svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: #475569;
+            stroke-width: 2;
+        }
+
+        .texto-corrido {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .texto-oracao {
+            font-size: 0.95rem;
+            color: #334155;
+            font-style: italic;
+            border-left: 3px solid #e2e8f0;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        .titulo-oracao-label {
+            font-size: 0.9rem;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .fonte-consultada {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 15px;
+        }
+
+        .tag-leitura-tipo {
+            display: inline-block;
+            background-color: white;
+            color: #1e3a8a;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid #e2e8f0;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .tag-referencia {
+            display: inline-block;
+            color: #dfad43;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-left: 8px;
+        }
+
+        .titulo-leitura-interno {
+            font-size: 1.05rem;
+            color: #0b2545;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-topo">
+        <a href="../../index.html">← Voltar ao Calendário</a>
+    </div>
+
+    <main>
+
+        <!-- Cabeçalho Principal -->
+        <div class="header-liturgia">
+            <div class="data-topo">📅 Segunda-feira, 13 de julho de 2026</div>
+            <h1>Segunda-feira da 15ª Semana<br>do Tempo Comum</h1>
+            
+            <div class="tags-container">
+                <span class="tag-info">Tempo Comum</span>
+                <span class="tag-info tag-cor-verde">Verde</span>
+            </div>
+        </div>
+
+        <!-- ================= SEÇÃO ACCORDION: SANTO(S) DO DIA ================= -->
+        <details class="card-secao-principal" open>
+            <summary>
+                <div class="titulo-secao-container">
+                    <div class="wrapper-icone">
+                        <svg class="estrela-fill" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h2 class="titulo-secao">Santo(s) do Dia</h2>
+                </div>
+                <p class="subtitulo-secao">Conheça as histórias dos santos celebrados hoje</p>
+            </summary>
+            
+            <div class="conteudo-accordion">
+                <!-- Sub-Box: Santo Henrique -->
+                <div class="box-conteudo-interno">
+                    <div class="topo-santo-interno">
+                        <h3 class="titulo-santo-interno">Santo Henrique, Imperador de justiça e paz</h3>
+                        <span class="mini-data-tag">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            13 de julho
+                        </span>
+                    </div>
+                    <p class="texto-corrido">Nascido na Baviera em 973, Henrique pertencia à realeza e recebeu uma sólida formação cristã, sendo educado por São Wolfgang. Ao assumir o trono da Alemanha e, posteriormente, ser coroado Imperador do Sacro Império Romano-Germânico em 1014 pelo Papa Bento VIII, Henrique distinguiu-se como um governante exemplar. Em vez de buscar a expansão de seus domínios pelo poder temporal, trabalhou incansavelmente pela consolidação da paz, pela reforma da Igreja e pela expansão da atividade missionária.</p>
+                    <p class="texto-corrido">Casado com Santa Cunegundes, o casal viveu uma união baseada no respeito mútuo, na oração e na caridade ativa, apoiando a fundação de inúmeros mosteiros e da diocese de Bamberg, que se tornou um polo cultural e religioso. Henrique enfrentou com sabedoria e paciência as constantes contendas políticas e de saúde de sua época, mantendo-se sempre fiel aos princípios evangélicos. Faleceu em 13 de julho de 1024 e foi canonizado pelo Papa Eugênio III em 1146, tornando-se o padroeiro dos governantes cristãos.</p>
+                    
+                    <div class="titulo-oracao-label">Oração:</div>
+                    <div class="texto-oracao">“Deus de infinita bondade, que cumulastes Santo Henrique com as riquezas de vossa graça e o conduzistes da realeza terrena à glória do Reino dos Céus, concedei-nos, por suas preces, exercer com espírito de justiça e caridade as nossas obrigações diárias. Amém.”</div>
+                    
+                    <div class="fonte-consultada"><strong>Fontes consultadas:</strong> Santo do Dia: Canção Nova</div>
+                </div>
+            </div>
+        </details>
+
+        <!-- ================= SEÇÃO ACCORDION: LITURGIA DA PALAVRA ================= -->
+        <details class="card-secao-principal" open>
+            <summary>
+                <div class="titulo-secao-container">
+                    <div class="wrapper-icone">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="titulo-secao">Liturgia da Palavra</h2>
+                </div>
+                <p class="subtitulo-secao">Fique por dentro das Leituras do Dia!</p>
+            </summary>
+            
+            <div class="conteudo-accordion">
+                <!-- Antífona de Entrada -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Antífona de Entrada</span>
+                    <div class="texto-corrido">Contemplarei, justificado, a vossa face; e ficarei saciado quando se manifestar vossa glória. (Cf. Sl 16,15)</div>
+                </div>
+
+                <!-- Primeira Leitura -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Primeira Leitura</span>
+                    <span class="tag-referencia">Is 1,10-17</span>
+                    <h3 class="titulo-leitura-interno">Leitura do Livro do Profeta Isaías</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;"><sup>10</sup> Ouvi a palavra do Senhor, chefes de Sodoma; escutai a instrução do nosso Deus, povo de Gomorra. <sup>11</sup> "Que me importa a multidão de vossos sacrifícios? — diz o Senhor. Estou farto de holocaustos de carneiros e da gordura de animais cevados; do sangue de novilhos, de cordeiros e de bodes não me agrado. 
+                    <sup>12</sup> Quando vindes apresentar-vos diante de mim, quem vos pediu que pisásseis os meus átrios? <sup>13</sup> Não continueis a trazer oferendas vãs; o incenso me é abominável. Luas novas, sábados, reuniões de assembleia... Não suporto a iniquidade junto com as assembleias solenes! 
+                    <sup>14</sup> Minha alma detesta as vossas luas novas e as vossas festas fixas; tornaram-se um peso para mim, estou cansado de suportá-las. <sup>15</sup> Quando estenderdes as vossas mãos, desviarei de vós os meus olhos; e mesmo que multipliqueis as orações, não as ouvirei, pois as vossas mãos estão cheias de sangue. 
+                    <sup>16</sup> Lavai-vos, purificai-vos, tirai a maldade de vossas ações de diante dos meus olhos; cessai de fazer o mal, <sup>17</sup> aprendei a fazer o bem; procurai o direito, socorrei o oprimido, fazei justiça ao órfão, defendei a causa da viúva".
+                    
+                    — Palavra do Senhor.
+                    <strong>— Graças a Deus.</strong></div>
+                </div>
+
+                <!-- Salmo -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Salmo Responsorial</span>
+                    <span class="tag-referencia">Sl 49(50),8-9.16bc-17.21.23 (R. 23b)</span>
+                    <h3 class="titulo-leitura-interno">— A quem caminha retamente, mostrarei a salvação de Deus.</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;"><strong>— A quem caminha retamente, mostrarei a salvação de Deus.</strong>
+
+                    — "Eu não venho culpar-te pelos teus sacrifícios; teus holocaustos estão sempre diante de mim. Não preciso de novilhos tirados de tua casa, nem de bodes dos teus rebanhos".
+                    
+                    — "Por que recitas os meus mandamentos e tens na boca a minha aliança? Tu que detestas a disciplina e lanças para trás de ti as minhas palavras!"
+                    
+                    — "Fazendo isto, pensavas que eu calaria? Pensavas que eu era igual a ti? Eu te arguirei e porei tudo diante dos teus olhos. Quem me oferece um sacrifício de louvor, esse me honra; e a quem caminha retamente, mostrarei a salvação de Deus".</div>
+                </div>
+
+                <!-- Aclamação ao Evangelho -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Aclamação ao Evangelho</span>
+                    <span class="tag-referencia">Cf. Mt 5,10</span>
+                    <div class="texto-corrido" style="white-space: pre-line;"><strong>— Aleluia, Aleluia, Aleluia.</strong>
+                    — Felizes os que são perseguidos por causa da justiça, porque deles é o Reino dos Céus!</div>
+                </div>
+
+                <!-- Evangelho -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Evangelho</span>
+                    <span class="tag-referencia">Mt 10,34–11,1</span>
+                    <h3 class="titulo-leitura-interno">Proclamação do Evangelho de Jesus Cristo segundo Mateus</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;">— O Senhor esteja convosco.
+                    <strong>— Ele está no meio de nós.</strong>
+                    — Proclamação do Evangelho de Jesus Cristo segundo Mateus.
+                    <strong>— Glória a vós, Senhor.</strong>
+
+                    Naquele tempo, disse Jesus aos seus apóstolos: <sup>34</sup> "Não penseis que vim trazer a paz à terra; não vim trazer a paz, mas a espada. <sup>35</sup> Pois vim separar o homem de seu pai, a filha de sua mãe e a nora de sua sogra; 
+                    <sup>36</sup> e os inimigos do homem serão os seus próprios familiares. <sup>37</sup> Quem ama o pai ou a mãe mais do que a mim, não é digno de mim; e quem ama o filho ou a filha mais do que a mim, não é digno de mim. 
+                    <sup>38</sup> Quem não toma a sua cruz e não me segue, não é digno de mim. <sup>39</sup> Quem achar a sua vida, irá perdê-la; mas quem perder a sua vida por causa de mim, irá achá-la. 
+                    <sup>40</sup> Quem vos recebe, a mim recebe; e quem me recebe, recebe aquele que me enviou. <sup>41</sup> Quem recebe um profeta por ser profeta, receberá a recompensa de profeta; e quem recebe um justo por ser justo, receberá a recompensa de justo. 
+                    <sup>42</sup> E quem der, nem que seja um copo de água fria, a um destes pequeninos, por ser meu discípulo, em verdade vos digo: não perderá a sua recompensa". <sup>1</sup> Quando Jesus terminou de dar essas instruções aos seus doze discípulos, partiu dali para ensinar e pregar nas cidades da região.
+
+                    — Palavra da Salvação.
+                    <strong>— Glória a vós, Senhor.</strong></div>
+                </div>
+
+                <!-- Antífona da Comunhão -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Antífona da Comunhão</span>
+                    <div class="texto-corrido" style="white-space: pre-line;">O pássaro encontra abrigo e a andorinha um ninho para pôr os seus filhotes: os vossos altares, Senhor do universo, meu rei e meu Deus!
+                    Felizes os que habitam em vossa casa: sem cessar vos louvarão. (Cf. Sl 83,4-5)</div>
+                </div>
+            </div>
+        </details>
+
+        <footer>
+            <p>&copy; 2026 - Liturgia Diária.</p>
+        </footer>
+    </main>
+
+</body>
+</html>
