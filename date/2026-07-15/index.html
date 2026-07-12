@@ -1,1 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarta-feira - Memória de São Boaventura, Bispo e Doutor da Igreja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
 
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        .nav-topo {
+            max-width: 650px;
+            margin: 20px auto 0 auto;
+            padding: 0 15px;
+        }
+        .nav-topo a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        main {
+            max-width: 650px;
+            margin: 15px auto 40px auto;
+            padding: 0 15px;
+        }
+
+        /* --- CABEÇALHO DA LITURGIA --- */
+        .header-liturgia {
+            background-color: #f8fafc;
+            border-radius: 24px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .header-liturgia::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background-color: #cbd5e1; /* Cor neutra para o Branco */
+        }
+
+        .data-topo {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .header-liturgia h1 {
+            font-family: 'Playfair Display', serif;
+            margin: 0 0 20px 0;
+            font-size: 2.1rem;
+            color: #0b2545;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .tags-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tag-info {
+            background: white;
+            color: #1e293b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tag-cor-branca {
+            background-color: #ffffff;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag-cor-branca::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #e2e8f0;
+            border: 1px solid #94a3b8;
+            border-radius: 50%;
+        }
+
+        /* --- CARDS PRINCIPAIS COM ACCORDION NATIVO --- */
+        .card-secao-principal {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        /* Cabeçalho clicável do Accordion */
+        .card-secao-principal summary {
+            padding: 30px;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            outline: none;
+        }
+
+        .card-secao-principal summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .card-secao-principal summary::after {
+            content: "";
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid #64748b;
+            border-bottom: 2px solid #64748b;
+            transform: translateY(-70%) rotate(45deg);
+            transition: transform 0.2s ease;
+        }
+
+        .card-secao-principal[open] summary::after {
+            transform: translateY(-30%) rotate(-135deg);
+        }
+
+        .conteudo-accordion {
+            padding: 0 30px 30px 30px;
+        }
+
+        .titulo-secao-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 5px;
+        }
+
+        .wrapper-icone {
+            background-color: #fefbeb;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .wrapper-icone svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: #dfad43;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .wrapper-icone svg.estrela-fill {
+            fill: #dfad43;
+        }
+
+        .titulo-secao {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #0b2545;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .subtitulo-secao {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0;
+            padding-left: 60px;
+        }
+
+        /* --- SUB-BOXES INTERNAS --- */
+        .box-conteudo-interno {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .box-conteudo-interno:last-child {
+            margin-bottom: 0;
+        }
+
+        .topo-santo-interno {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .titulo-santo-interno {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #0b2545;
+            margin: 0;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .mini-data-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #e2e8f0;
+            color: #475569;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .mini-data-tag svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: #475569;
+            stroke-width: 2;
+        }
+
+        .texto-corrido {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .texto-oracao {
+            font-size: 0.95rem;
+            color: #334155;
+            font-style: italic;
+            border-left: 3px solid #e2e8f0;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        .titulo-oracao-label {
+            font-size: 0.9rem;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .fonte-consultada {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 15px;
+        }
+
+        .tag-leitura-tipo {
+            display: inline-block;
+            background-color: white;
+            color: #1e3a8a;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid #e2e8f0;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .tag-referencia {
+            display: inline-block;
+            color: #dfad43;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-left: 8px;
+        }
+
+        .titulo-leitura-interno {
+            font-size: 1.05rem;
+            color: #0b2545;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-topo">
+        <a href="../../index.html">← Voltar ao Calendário</a>
+    </div>
+
+    <main>
+
+        <!-- Cabeçalho Principal -->
+        <div class="header-liturgia">
+            <div class="data-topo">📅 Quarta-feira, 15 de julho de 2026</div>
+            <h1>São Boaventura, Bispo e<br>Doutor da Igreja</h1>
+            
+            <div class="tags-container">
+                <span class="tag-info">Memória</span>
+                <span class="tag-info tag-cor-branca">Branco</span>
+            </div>
+        </div>
+
+        <!-- ================= SEÇÃO ACCORDION: SANTO(S) DO DIA ================= -->
+        <details class="card-secao-principal" open>
+            <summary>
+                <div class="titulo-secao-container">
+                    <div class="wrapper-icone">
+                        <svg class="estrela-fill" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h2 class="titulo-secao">Santo(s) do Dia</h2>
+                </div>
+                <p class="subtitulo-secao">Conheça as histórias dos santos celebrados hoje</p>
+            </summary>
+            
+            <div class="conteudo-accordion">
+                <!-- Sub-Box: São Boaventura -->
+                <div class="box-conteudo-interno">
+                    <div class="topo-santo-interno">
+                        <h3 class="titulo-santo-interno">São Boaventura, o Doutor Seráfico</h3>
+                        <span class="mini-data-tag">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            15 de julho
+                        </span>
+                    </div>
+                    <p class="texto-corrido">Nascido na Toscana, Itália, por volta de 1218, Boaventura foi curado de uma grave enfermidade na infância por intercessão de São Francisco de Assis. Ingressou na Ordem dos Frades Menores, onde aliou de forma perfeita a profunda erudição intelectual a uma autêntica humildade evangélica. Estudou e lecionou na renomada Universidade de Paris, tornando-se um dos maiores teólogos e filósofos da Escolástica, contemporâneo e amigo pessoal de São Tomás de Aquino.</p>
+                    <p class="texto-corrido">Eleito Ministro Geral da Ordem Franciscana, trabalhou com sabedoria para pacificar as tensões internas e estruturar a comunidade, sendo considerado seu "segundo pai". Nomeado Cardeal e Bispo de Albano pelo Papa Gregório X, teve papel fundamental no Concílio de Lyon, onde buscou a reconciliação com a Igreja Ortodoxa do Oriente. Faleceu durante o concílio, em 15 de julho de 1274. Por seus escritos repletos de elevação mística e amor divino, recebeu o título de "Doutor Seráfico".</p>
+                    
+                    <div class="titulo-oracao-label">Oração:</div>
+                    <div class="texto-oracao">“Deus eterno e todo-poderoso, que hoje celebrais a festa de São Boaventura, concedei-nos a graça de aproveitar as lições de sua imensa sabedoria e imitar sempre o ardor de sua caridade. Por Nosso Senhor Jesus Cristo, vosso Filho, na unidade do Espírito Santo. Amém.”</div>
+                    
+                    <div class="fonte-consultada"><strong>Fontes consultadas:</strong> Santo do Dia: Canção Nova</div>
+                </div>
+            </div>
+        </details>
+
+        <!-- ================= SEÇÃO ACCORDION: LITURGIA DA PALAVRA ================= -->
+        <details class="card-secao-principal" open>
+            <summary>
+                <div class="titulo-secao-container">
+                    <div class="wrapper-icone">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="titulo-secao">Liturgia da Palavra</h2>
+                </div>
+                <p class="subtitulo-secao">Fique por dentro das Leituras do Dia!</p>
+            </summary>
+            
+            <div class="conteudo-accordion">
+                <!-- Antífona de Entrada -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Antífona de Entrada</span>
+                    <div class="texto-corrido">Servo fiel e prudente, a quem o Senhor confiou a sua família para dar-lhes na hora certa a sua porção de trigo (Cf. Lc 12,42)</div>
+                </div>
+
+                <!-- Leitura -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Leitura</span>
+                    <span class="tag-referencia">Is 10,5-7.13-16</span>
+                    <h3 class="titulo-leitura-interno">Leitura do Livro do Profeta Isaías</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;">Assim fala o Senhor: <sup>5</sup> "Ai de Assur, vara de minha cólera, bastão em minhas mãos, instrumento de minha indignação! <sup>6</sup> Eu o envio contra uma nação ímpia e ordeno-lhe, contra um povo que me excita à ira, que o submeta à pilhagem e ao saque, que o calque aos pés como lama nas ruas. <sup>7</sup> Mas ele assim não pensava, seu propósito não era esse; pelo contrário, sua intenção era esmagar e exterminar não poucas nações. <sup>13</sup> Pois diz o rei da Assíria: 'Realizei isso pela força da minha mão e com minha sagacidade, pois tenho experiência; aboli as fronteiras dos povos, saqueei seus tesouros, e derrubei de golpe os ocupantes de altos postos; <sup>14</sup> minha mão empalmou como um ninho a riqueza dos povos; e como se apanha uma ninhada de ovos, assim ajuntei eu os povos da terra, e não houve quem batesse asa ou abrisse o bico e desse um pio'. <sup>15</sup> Mas acaso gloria-se o machado, em detrimento do lenhador que com ele corta? Ou se exalta a serra contra o serrador que a maneja? Como se a vara movesse quem a levanta e um bastão erguesse aquele que não é madeira. <sup>16</sup> Por isso, enviará o Dominador, Senhor dos exércitos, contra aqueles fortes guerreiros o raquitismo; e abalará sua glória com convulsões que queimam como fogo".
+                    
+                    — Palavra do Senhor.
+                    <strong>— Graças a Deus.</strong></div>
+                </div>
+
+                <!-- Salmo -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Salmo Responsorial</span>
+                    <span class="tag-referencia">Sl 93(94),5-6.7-8.9-10.14-15 (R. 14a)</span>
+                    <h3 class="titulo-leitura-interno">— O Senhor não rejeita o seu povo.</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;"><strong>— O Senhor não rejeita o seu povo.</strong>
+
+                    — Eis que oprimem, Senhor, vosso povo e humilham a vossa herança; estrangeiro e viúva trucidam, e assassinam o pobre e o órfão! 
+                    
+                    — Eles dizem: "O Senhor não nos vê e o Deus de Jacó não percebe!" Entendei, ó estultos do povo; insensatos, quando é que vereis? 
+                    
+                    — O que fez o ouvido, não ouve? Quem os olhos formou, não verá? Quem educa as nações, não castiga? Quem os homens ensina, não sabe? 
+                    
+                    — O Senhor não rejeita o seu povo e não pode esquecer sua herança: voltarão a juízo as sentenças; quem é reto andará na justiça. </div>
+                </div>
+
+                <!-- Aclamação ao Evangelho -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Aclamação ao Evangelho</span>
+                    <span class="tag-referencia">Cf. Mt 11,25</span>
+                    <div class="texto-corrido" style="white-space: pre-line;"><strong>— Aleluia, Aleluia, Aleluia.</strong>
+                    — Graças te dou, ó Pai, Senhor do céu e da terra, pois, revelaste os mistérios do teu Reino aos pequeninos, escondendo-os aos doutores!</div>
+                </div>
+
+                <!-- Evangelho -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Evangelho</span>
+                    <span class="tag-referencia">Mt 11,25-27</span>
+                    <h3 class="titulo-leitura-interno">Proclamação do Evangelho de Jesus Cristo segundo Mateus</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;">— O Senhor esteja convosco.
+                    <strong>— Ele está no meio de nós.</strong>
+                    — Proclamação do Evangelho de Jesus Cristo segundo Mateus.
+                    <strong>— Glória a vós, Senhor.</strong>
+
+                    <sup>25</sup> Naquele tempo, Jesus pôs-se a dizer: "Eu te louvo, ó Pai, Senhor do céu e da terra, porque escondeste estas coisas aos sábios e entendidos e as revelaste aos pequeninos. <sup>26</sup> Sim, Pai, porque assim foi do teu agrado. <sup>27</sup> Tudo me foi entregue por meu Pai, e ninguém conhece o Filho, senão o Pai, e ninguém conhece o Pai, senão o Filho e aquele a quem o Filho o quiser revelar".
+
+                    — Palavra da Salvação.
+                    <strong>— Glória a vós, Senhor.</strong></div>
+                </div>
+
+                <!-- Antífona da Comunhão -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Antífona da Comunhão</span>
+                    <div class="texto-corrido" style="white-space: pre-line;">Feliz o servo gue o Senhor, ao chegar e bater à porta, encontrar acordado (Cf. Lc 12,36-37)</div>
+                </div>
+            </div>
+        </details>
+
+        <footer>
+            <p>&copy; 2026 - Liturgia Diária.</p>
+        </footer>
+    </main>
+
+</body>
+</html>
