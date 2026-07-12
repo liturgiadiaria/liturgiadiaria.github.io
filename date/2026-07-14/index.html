@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segunda-feira da 15ª Semana do Tempo Comum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        .nav-topo {
+            max-width: 650px;
+            margin: 20px auto 0 auto;
+            padding: 0 15px;
+        }
+        .nav-topo a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        main {
+            max-width: 650px;
+            margin: 15px auto 40px auto;
+            padding: 0 15px;
+        }
+
+        /* --- CABEÇALHO DA LITURGIA --- */
+        .header-liturgia {
+            background-color: #f4fbf7;
+            border-radius: 24px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .header-liturgia::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background-color: #16a34a;
+        }
+
+        .data-topo {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .header-liturgia h1 {
+            font-family: 'Playfair Display', serif;
+            margin: 0 0 20px 0;
+            font-size: 2.1rem;
+            color: #0b2545;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .tags-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tag-info {
+            background: white;
+            color: #1e293b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tag-cor-verde {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag-cor-verde::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #16a34a;
+            border-radius: 50%;
+        }
+
+        /* --- CARDS PRINCIPAIS COM ACCORDION NATIVO --- */
+        .card-secao-principal {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        /* Cabeçalho clicável do Accordion */
+        .card-secao-principal summary {
+            padding: 30px;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            outline: none;
+        }
+
+        .card-secao-principal summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .card-secao-principal summary::after {
+            content: "";
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid #64748b;
+            border-bottom: 2px solid #64748b;
+            transform: translateY(-70%) rotate(45deg);
+            transition: transform 0.2s ease;
+        }
+
+        .card-secao-principal[open] summary::after {
+            transform: translateY(-30%) rotate(-135deg);
+        }
+
+        .conteudo-accordion {
+            padding: 0 30px 30px 30px;
+        }
+
+        .titulo-secao-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 5px;
+        }
+
+        .wrapper-icone {
+            background-color: #fefbeb;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .wrapper-icone svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: #dfad43;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .wrapper-icone svg.estrela-fill {
+            fill: #dfad43;
+        }
+
+        .titulo-secao {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #0b2545;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .subtitulo-secao {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0;
+            padding-left: 60px;
+        }
+
+        /* --- SUB-BOXES INTERNAS --- */
+        .box-conteudo-interno {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .box-conteudo-interno:last-child {
+            margin-bottom: 0;
+        }
+
+        .topo-santo-interno {
+            display: flex;
+            justify-space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .titulo-santo-interno {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #0b2545;
+            margin: 0;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .mini-data-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #e2e8f0;
+            color: #475569;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .mini-data-tag svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: #475569;
+            stroke-width: 2;
+        }
+
+        .texto-corrido {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .texto-oracao {
+            font-size: 0.95rem;
+            color: #334155;
+            font-style: italic;
+            border-left: 3px solid #e2e8f0;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        .titulo-oracao-label {
+            font-size: 0.9rem;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .fonte-consultada {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 15px;
+        }
+
+        .tag-leitura-tipo {
+            display: inline-block;
+            background-color: white;
+            color: #1e3a8a;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid #e2e8f0;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .tag-referencia {
+            display: inline-block;
+            color: #dfad43;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-left: 8px;
+        }
+
+        .titulo-leitura-interno {
+            font-size: 1.05rem;
+            color: #0b2545;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-topo">
+        <a href="../../index.html">← Voltar ao Calendário</a>
+    </div>
+
+    <main>
+
+        <!-- Cabeçalho Principal -->
+        <div class="header-liturgia">
+            <div class="data-topo">📅 Terça-feira, 14 de julho de 2026</div>
+            <h1>Terça-feira da 15ª Semana<br>do Tempo Comum</h1>
+            
+            <div class="tags-container">
+                <span class="tag-info">Tempo Comum</span>
+                <span class="tag-info tag-cor-verde">Verde</span>
+            </div>
+        </div>
+
+        <!-- ================= SEÇÃO ACCORDION: SANTO(S) DO DIA ================= -->
+        <details class="card-secao-principal" open>
+            <summary>
+                <div class="titulo-secao-container">
+                    <div class="wrapper-icone">
+                        <svg class="estrela-fill" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h2 class="titulo-secao">Santo(s) do Dia</h2>
+                </div>
+                <p class="subtitulo-secao">Conheça as histórias dos santos celebrados hoje</p>
+            </summary>
+            
+            <div class="conteudo-accordion">
+                <!-- Sub-Box: São Camilo de Léllis -->
+                <div class="box-conteudo-interno">
+                    <div class="topo-santo-interno">
+                        <h3 class="titulo-santo-interno">São Camilo de Léllis, patrono dos enfermos</h3>
+                        <span class="mini-data-tag">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            14 de julho
+                        </span>
+                    </div>
+                    <p class="texto-corrido">Camilo nasceu em Abruzzo, Itália, no ano de 1550. Teve uma juventude turbulenta, marcada pelo vício do jogo e pela carreira militar, chegando a perder todos os seus bens materiais. No entanto, sua vida foi transformada de forma radical aos 25 anos quando, tocado pela misericórdia divina através das palavras de um frade capuchinho, iniciou uma sincera caminhada de conversão. Devido a uma chaga crônica em seu pé, precisou frequentar repetidamente o Hospital de São Tiago em Roma, onde deparou-se com a precariedade e o abandono sofrido pelos doentes da época.</p>
+                    <p class="texto-corrido">Inspirado pelo Espírito Santo e amparado espiritualmente por seu confessor, São Filipe Néri, Camilo compreendeu que sua vocação consistia em enxergar o próprio Cristo na pessoa dos enfermos. Ele foi ordenado sacerdote e fundou a Ordem dos Ministros dos Enfermos (conhecidos hoje como Camilianos), cujos membros se dedicavam inteiramente ao cuidado dos hospitalizados, portando no peito uma cruz vermelha de pano. Camilo instituiu uma verdadeira revolução na assistência médica, baseando o cuidado no afeto e na dignidade do paciente. Faleceu em 14 de julho de 1614, foi canonizado em 1746 e, mais tarde, proclamado pelo Papa Leão XIII como patrono dos enfermos e dos hospitais.</p>
+                    
+                    <div class="titulo-oracao-label">Oração:</div>
+                    <div class="texto-oracao">“Ó Deus, que concedestes a São Camilo de Lellis o dom de um amor compassivo e heroico para com os doentes e necessitados, derramai em nossos corações o mesmo espírito de caridade, para que possamos servir-Vos na pessoa de nossos irmãos enfermos e alcançar de Vossa bondade a saúde do corpo e da alma. Amém."</div>
+                    
+                    <div class="fonte-consultada"><strong>Fontes consultadas:</strong> Santo do Dia: Canção Nova</div>
+                </div>
+            </div>
+        </details>
+
+        <!-- ================= SEÇÃO ACCORDION: LITURGIA DA PALAVRA ================= -->
+        <details class="card-secao-principal" open>
+            <summary>
+                <div class="titulo-secao-container">
+                    <div class="wrapper-icone">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="titulo-secao">Liturgia da Palavra</h2>
+                </div>
+                <p class="subtitulo-secao">Fique por dentro das Leituras do Dia!</p>
+            </summary>
+            
+            <div class="conteudo-accordion">
+                <!-- Antífona de Entrada -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Antífona de Entrada</span>
+                    <div class="texto-corrido">Contemplarei, justificado, a vossa face; e ficarei saciado quando se manifestar vossa glória. (Cf. Sl 16,15)</div>
+                </div>
+
+                <!-- Leitura -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Leitura</span>
+                    <span class="tag-referencia">Is 7,1-9</span>
+                    <h3 class="titulo-leitura-interno">Leitura do Livro do Profeta Isaías</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;"><sup>1</sup> No tempo de Acaz, filho de Joatão, filho de Ozias, rei de Judá, aconteceu que Rason, rei da Síria, e Facéia, filho de Romelias, rei de Israel, puseram-se em marcha para atacar Jerusalém, mas não conseguiram conquistá-la. <sup>2</sup> Foi dada a notícia à casa de Davi: "Os homens da Síria estão acampados em Efraim". Tremeu o coração do rei e de todo o povo, como as árvores da floresta diante do vento. <sup>3</sup> Então disse o Senhor a Isaías: "Vai ao encontro de Acaz com teu filho Sear-Iasub (isto é, 'um resto voltará') até a ponta do canal, na piscina superior, na direção da estrada do Campo dos pisadores; <sup>4</sup> e dirás ao rei: 'Procura estar calmo; não temas nem estremeça o teu coração por causa desses dois pedaços de tição fumegantes, diante da ira furiosa de Rason e da Síria, e do filho de Romelias, <sup>5</sup> por terem a Síria, Efraim e o filho de Romelias conjurado contra ti, dizendo: <sup>6</sup> 'Vamos atacar Judá, enchê-lo de medo e conquistá-lo para nós, e nomear novo rei, o filho de Tabeel'. <sup>7</sup> Isto diz o Senhor Deus: 'Este plano fracassará, nada disso se realizará! <sup>8</sup> Que seja Damasco a capital da Síria e Rason o chefe de Damasco; dentro de sessenta e cinco anos deixará Efraim de ser povo; <sup>9</sup> que seja a Samaria capital de Efraim e o filho de Romelias chefe de Efraim. De resto, se não confiardes, não podereis manter-vos firmes'".
+                    
+                    — Palavra do Senhor.
+                    <strong>— Graças a Deus.</strong></div>
+                </div>
+
+                <!-- Salmo -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Salmo Responsorial</span>
+                    <span class="tag-referencia">Sl 47(48),2-3a.3b-4.5-6.7-8 (R. 9d)</span>
+                    <h3 class="titulo-leitura-interno">- O Senhor estabelece sua cidade para sempre.</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;"><strong>- O Senhor estabelece sua cidade para sempre.</strong>
+
+                    — Grande é o Senhor e muito digno de louvores na cidade onde ele mora; seu Monte santo, esta colina encantadora é a alegria do universo. 
+                    
+                    — Monte Sião, no extremo norte situado, és a mansão do grande Rei! Deus revelou-se em suas fortes cidadelas um refúgio poderoso.  
+                    
+                    — Monte Sião, no extremo norte situado, és a mansão do grande Rei! Deus revelou-se em suas fortes cidadelas um refúgio poderoso. 
+                    
+                    — Como as dores da mulher sofrendo parto, uma angústia os invadiu; semelhante ao vento leste impetuoso, que despedaça as naus de Társis. </div>
+                </div>
+
+                <!-- Aclamação ao Evangelho -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Aclamação ao Evangelho</span>
+                    <span class="tag-referencia">Cf. Mt 5,10</span>
+                    <div class="texto-corrido" style="white-space: pre-line;"><strong>— Aleluia, Aleluia, Aleluia.</strong>
+                    — Oxalá ouvísseis hoje a sua voz. Não fecheis os corações como em Meriba!</div>
+                </div>
+
+                <!-- Evangelho -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Evangelho</span>
+                    <span class="tag-referencia">Mt 11,20-24</span>
+                    <h3 class="titulo-leitura-interno">Proclamação do Evangelho de Jesus Cristo segundo Mateus</h3>
+                    <div class="texto-corrido" style="white-space: pre-line;">— O Senhor esteja convosco.
+                    <strong>— Ele está no meio de nós.</strong>
+                    — Proclamação do Evangelho de Jesus Cristo segundo Mateus.
+                    <strong>— Glória a vós, Senhor.</strong>
+
+                    Naquele tempo, Jesus começou a censurar as cidades onde fora realizada a maior parte de seus milagres, porque não se tinham convertido. <sup>21</sup> "Ai de ti, Corazim! Ai de ti, Betsaida! Porque, se os milagres que se realizaram no meio de vós, tivessem sido feitos em Tiro e Sidônia, há muito tempo elas teriam feito penitência, vestindo-se de cilício e cobrindo-se de cinza. <sup>22</sup> Pois bem! Eu vos digo: no dia do julgamento, Tiro e Sidônia serão tratadas com menos dureza do que vós. <sup>23</sup> E tu, Cafarnaum! Acaso serás erguida até o céu? Não! Serás jogada no inferno! Porque, se os milagres que foram realizados no meio de ti tivessem sido feitos em Sodoma, ela existiria até hoje! <sup>24</sup> Eu, porém, vos digo: no dia do juízo, Sodoma será tratada com menos dureza do que vós!"
+
+                    — Palavra da Salvação.
+                    <strong>— Glória a vós, Senhor.</strong></div>
+                </div>
+
+                <!-- Antífona da Comunhão -->
+                <div class="box-conteudo-interno">
+                    <span class="tag-leitura-tipo">Antífona da Comunhão</span>
+                    <div class="texto-corrido" style="white-space: pre-line;">O pássaro encontra abrigo e a andorinha um ninho para pôr os seus filhotes: os vossos altares, Senhor do universo, meu rei e meu Deus!
+                    Felizes os que habitam em vossa casa: sem cessar vos louvarão. (Cf. Sl 83,4-5)</div>
+                </div>
+            </div>
+        </details>
+
+        <footer>
+            <p>&copy; 2026 - Liturgia Diária.</p>
+        </footer>
+    </main>
+
+</body>
+</html>
